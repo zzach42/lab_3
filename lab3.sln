@@ -1,0 +1,26 @@
+#ifndef DEPARTMENT_H
+#define DEPARTMENT_H
+
+#include <string>
+#include <vector>
+
+class Employee;
+
+class Department {
+private:
+    std::string name;
+    Employee* boss;
+    std::vector<Employee*> employees;
+
+public:
+    Department(std::string name);
+
+    void setBoss(Employee* boss);
+    void addEmployee(Employee* emp);
+
+    std::string getName() const;
+    Employee* getBoss() const;
+    const std::vector<Employee*>& getEmployees() const;
+};
+
+#endif

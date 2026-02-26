@@ -1,0 +1,27 @@
+#include "employee.h"
+#include "department.h"
+
+Employee::Employee(std::string name)
+    : name(name), department(nullptr) {
+}
+
+void Employee::setDepartment(Department* dep) {
+    department = dep;
+    dep->addEmployee(this);
+}
+
+std::string Employee::toString() const {
+    if (department->getBoss() == this) {
+        return name + " начальник отдела " + department->getName();
+    }
+    return name + " работает в отделе " + department->getName() +
+        ", начальник которого " + department->getBoss()->toString();
+}
+
+void Employee::print() const {
+    std::cout << toString() << std::endl;
+}
+
+Department* Employee::getDepartment() const {
+    return department;
+}
